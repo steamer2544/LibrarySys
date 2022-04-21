@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var dashboardRouter = require('./routes/dashboard');
@@ -35,7 +36,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/', loginRouter);
+app.use('/', indexRouter);
+app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/member', memberRouter);
