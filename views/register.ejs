@@ -14,18 +14,13 @@
 <body class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white" style="background-image: url('/image/library.jpg');
 ">
     <div class="container bg-light">
-        <form style="max-width:300px;margin:auto;margin-top: 100px;" method="post" action="/register">
+        <form style="max-width:300px;margin:auto;margin-top: 100px;" method="post" action="/auth/register">
             <div class="mb-3">
                 <div class="text-center">
                    <!-- <%- messages() %> -->
                     <h3 class="font-weight-bold text-black mb-3">CREATE AN ACCOUNT</h3>
-                    <% if(locals.errors) { %>
-                        <ul class="alert alert-danger">
-                            <% Object.values(errors).forEach(function(error){%>
-                                <li><%= error.msg %></li>
-                            <% }) %>
-                        </ul>
-                        <% } %>
+                    
+                    
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
