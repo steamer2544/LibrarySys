@@ -1,0 +1,9 @@
+{
+    "bookName": "String",
+    "category": "String",
+    "issued": "Number",
+    "available": "Number",
+    "total": "Number",
+    "isbn": "String",
+    "author": "String"
+}
