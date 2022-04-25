@@ -57,6 +57,7 @@
                                         </div>
                                         <p class="card-text">
                                             Author: <%= book.author %> <br>
+                                            Category: <%= book.category %> <br>
                                             ISBN: <%= book.isbn %> <br>
                                             Available copies: <%= book.available %><br>
                                             Issued copies: <%= book.issued %><br>
@@ -66,7 +67,7 @@
                                             <button class="btn btn-outline-danger outOfStock">Out of Stock!</button>
                                         <% } else { %>
                                             <form action="/library/<%= user._id %>/issueBook" method="POST">
-                                                <button name="bookName" value="<%= book.bookName %>" type="submit" class="btn btn-outline-success">Issue this book!</button>
+                                                <button name="returnBookName" value="<%= book.bookName %>" type="submit" class="btn btn-outline-success">Issue this book!</button>
                                             </form>
                                         <% } %>
                                     </div>
@@ -74,7 +75,38 @@
                             </div>
                         </div>
                     </div>
-                    <% }); %>
+                    <table class="table table-striped">
+                        <thead class="thead-inverse">
+                          <tr>
+                            <th>Student Name</th>
+                            <th>Book Name</th>
+                            <th>ISBN</th>
+                            <th>Issue date</th>
+                            <th>Return date</th>
+                            
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td><%= user.username %></td>
+                            <td><%= book.bookName %></td></td>
+                            <td><%= book.isbn %></td>
+                            
+                            
+            
+                            <td>
+                                <form action="/library/<%= user._id %>/issueBook" method="POST" class="d-inline">
+                                    <input class="btn btn-xs btn-info" type="submit" value="Return">
+                               </form></td>
+                          </tr>
+                        
+                        </tbody>
+                      </table>
+                <% }); %>
+                
+                    
+                    
             </div>
         </div>
     </div>

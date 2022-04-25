@@ -4,7 +4,7 @@ mongoose.connect("mongodb://localhost:27017/bookshelflyDB");
 
 const librarySchema = new mongoose.Schema({
     bookName: String,
-    category: "String",
+    category: String,
     issued: Number,
     available: Number,
     total: Number,
