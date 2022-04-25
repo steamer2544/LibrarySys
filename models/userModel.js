@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     password: String,
     issuedBooks: [{
         bookName: String,
+        issuedDate: String,
     }],
     numberOfIssuedBooks: Number,
     signedIn: Boolean
