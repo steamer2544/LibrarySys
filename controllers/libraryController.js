@@ -58,7 +58,7 @@ exports.postIssueBook = function (req, res) {
                 // adding selected book to the user collection
                 foundUser.issuedBooks.push({
                     bookName: req.body.bookName,
-                    issueddate: new Date()//.toLocaleDateString()
+                    //issueddate: new Date()//.toLocaleDateString()
                 });
                 await foundUser.save();
                 // user issues the new book
