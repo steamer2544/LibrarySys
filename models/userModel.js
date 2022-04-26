@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-
-mongoose.connect("mongodb://localhost:27017/bookshelflyDB");
+require('dotenv').config();
+mongoose.connect(process.env.mongo_url || "mongodb://localhost:27017/test")
+.then(() => console.log('connect success'));
 
 const userSchema = new mongoose.Schema({
     username: String,
