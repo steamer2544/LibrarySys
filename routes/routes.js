@@ -18,24 +18,47 @@ app
     .get(authenticationController.getLogin)
     .post(authenticationController.postLogin);
 
+//user
 app
-    .route("/library/:userID")
+    .route("/dashboardUser/:userID")
     .get(libraryController.getLibrary);
 
 app
-    .route("/library/:userID/signout")
+    .route("/dashboardUser/:userID/signout")
     .post(libraryController.postSignout);
 
 app
-    .route("/library/:userID/issueBook")
+    .route("/dashboardUser/:userID/issueBook")
     .post(libraryController.postIssueBook);
 
 app
-    .route("/library/:userID/returnBook")
+    .route("/dashboardUser/:userID/returnBook")
     .post(libraryController.postReturnBook);
 
 app
-    .route("/library/:userID/newBook")
+    .route("/dashboardUser/:userID/newBook")
+    .get(libraryController.getNewBook)
+    .post(libraryController.postNewBook);
+
+//admin
+app
+    .route("/dashboardAdmin/:userID")
+    .get(libraryController.getLibrary);
+
+app
+    .route("/dashboardAdmin/:userID/signout")
+    .post(libraryController.postSignout);
+
+app
+    .route("/dashboardAdmin/:userID/issueBook")
+    .post(libraryController.postIssueBook);
+
+app
+    .route("/dashboardAdmin/:userID/returnBook")
+    .post(libraryController.postReturnBook);
+
+app
+    .route("/dashboardAdmin/:userID/newBook")
     .get(libraryController.getNewBook)
     .post(libraryController.postNewBook);
 

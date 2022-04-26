@@ -94,18 +94,16 @@ exports.postReturnBook = function (req, res) {
         } else {
             // removing book from issuedBooks array of users collection
             foundUser.issuedBooks.forEach(async function (object, index) {
-                if (object.bookName == req.body.returnBookName) {
+                if (object.isbn == req.body.returnISBN) {
                     foundUser.issuedBooks.splice(index, 1);
                     await foundUser.save();
                 }
             });
             // updating available and issued books in Library collection
-            Library.findOne({ bookName: req.body.returnBookName }, async function (err, foundBook) {
+            Library.findOne({ isbn: req.body.returnISBN }, async function (err, foundBook) {
                 if (err) {
                     res.send(err);
                 } else {
-                    foundBook.issued = foundBook.issued - 1;
-                    foundBook.available = foundBook.available + 1;
                     await foundBook.save();
                 }
             });
@@ -147,8 +145,6 @@ exports.postNewBook = function (req, res) {
                         bookName: req.body.newBookName,
                         category: req.body.newBookCategory,
                         issued: 0,
-                        available: req.body.newBookTotal,
-                        total: req.body.newBookTotal,
                         isbn: req.body.newBookISBN,
                         author: req.body.newBookAuthor
                     });

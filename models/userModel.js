@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     email: String,
     password: String,
     issuedBooks: [{
-        bookName: String,
+        isbn: String,
     }],
     //wait for time here!!!
     numberOfIssuedBooks: Number,

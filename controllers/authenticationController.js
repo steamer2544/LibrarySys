@@ -27,8 +27,8 @@ exports.postLogin = function (req, res) {
                 if (foundUser.password === password) {
                     foundUser.signedIn = true;
                     await foundUser.save();
-                    if(foundUser.admin === true){
-                        res.redirect("/dashboardAdmin/");
+                    if(foundUser.admin == true){
+                        res.redirect("/dashboardAdmin/"+ foundUser._id);
                     } else {
                     res.redirect("/dashboardUser/" + foundUser._id);
                     }
