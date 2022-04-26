@@ -1,4 +1,4 @@
-<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+<!<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="/stylesheets/style.css">
 <div class="sidebar">
   <header>
@@ -10,9 +10,7 @@
           <div class="text-header">
               <span class="name">Library Management System</span>
           </div>
-          <div class="user-info">
-            <span class="nav-link">Welcome, <%= user.firstname %></span>
-        </div>
+          
       </div>
 
        
@@ -22,6 +20,12 @@
   <div class="menu-bar">
       <div class="menu">
           <ul class="menu-links">
+              <li class="nav-link">
+                <a href="#">
+                    <span class="text nav-text">Welcome, <%= user.firstname %></span>
+                </a>
+            </li>
+            
               <li class="nav-link">
                   <a href="#">
                       <i class='bx bx-home-alt icon'></i>

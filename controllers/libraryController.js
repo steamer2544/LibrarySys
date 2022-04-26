@@ -18,7 +18,7 @@ exports.getLibrary = function (req, res) {
                     if (err) {
                         res.send(err);
                     } else {
-                        res.render("DashboardUser", {
+                        res.render("DashboardAdmin", {
                             user: foundUser,
                             books: foundBooks.reverse()
                         });
@@ -54,19 +54,19 @@ exports.postIssueBook = function (req, res) {
             var hasBook = false;
             foundUser.issuedBooks.forEach(async function (object) {
                 // console.log(object.bookName + " :: " + req.body.bookName);
-                if (object.bookName === req.body.bookName) {
+                if (object.isbn === req.body.isbn) {
                     hasBook = true;
                 }
             });
             if (!hasBook) {
                 // adding selected book to the user collection
                 foundUser.issuedBooks.push({
-                    bookName: req.body.bookName,
+                    isbn: req.body.isbn,
                 });
                 await foundUser.save();
                 // user issues the new book
                 // updating available and issued books in library collection
-                Library.findOne({ bookName: req.body.bookName }, async function (error, libraryBook) {
+                Library.findOne({ isbn: req.body.isbn }, async function (error, libraryBook) {
                     if (error) {
                         res.send(err);
                     } else {
@@ -132,7 +132,7 @@ exports.getNewBook = async function (req, res) {
 // POST
 // add new books to the library
 exports.postNewBook = function (req, res) {
-    Library.findOne({ bookName: req.body.newBookName }, async function (err, foundBook) {
+    Library.findOne({ isbn: req.body.newISBN }, async function (err, foundBook) {
         if (err) {
             res.send(err);
         } else {
