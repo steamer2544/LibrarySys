@@ -18,7 +18,7 @@ exports.getLibrary = function (req, res) {
                     if (err) {
                         res.send(err);
                     } else {
-                        res.render("library", {
+                        res.render("DashboardUser", {
                             user: foundUser,
                             books: foundBooks.reverse()
                         });
@@ -32,6 +32,7 @@ exports.getLibrary = function (req, res) {
 // POST
 // sign out from the library
 exports.postSignout = function (req, res) {
+    console.log("signing out");
     User.findOne({ _id: req.params.userID }, async function (err, foundUser) {
         if (err) {
             res.send(err);

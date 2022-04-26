@@ -7,7 +7,6 @@ const librarySchema = new mongoose.Schema({
     category: String,
     issued: Number,
     available: Number,
-    total: Number,
     isbn: String,
     author: String
 });

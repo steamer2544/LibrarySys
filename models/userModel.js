@@ -14,6 +14,8 @@ const userSchema = new mongoose.Schema({
     //wait for time here!!!
     numberOfIssuedBooks: Number,
     signedIn: Boolean,
+    admin: Boolean,
+    
 });
 
 const User = new mongoose.model("User", userSchema);

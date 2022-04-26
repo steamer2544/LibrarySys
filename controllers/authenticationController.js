@@ -27,8 +27,13 @@ exports.postLogin = function (req, res) {
                 if (foundUser.password === password) {
                     foundUser.signedIn = true;
                     await foundUser.save();
-                    res.redirect("/library/" + foundUser._id);
-                } else {
+                    if(foundUser.admin === true){
+                        res.redirect("/dashboardAdmin/");
+                    } else {
+                    res.redirect("/dashboardUser/" + foundUser._id);
+                    }
+                } 
+                else {
                     res.render("login", { dangerMessage: `Wrong password. Please try again.` });
                 }
             } else {
@@ -58,7 +63,8 @@ exports.postRegister = function (req, res) {
                     studentID: req.body.studentID, 
                     email: req.body.email,
                     password: md5(req.body.password),
-                    signedIn: false
+                    signedIn: false,
+                    admin: false,
                 });
                 newUser.save();
                 res.redirect("/");
