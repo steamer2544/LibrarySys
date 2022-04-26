@@ -16,10 +16,10 @@ exports.getLogin = function (req, res) {
 // POST
 // login authentication
 exports.postLogin = function (req, res) {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = md5(req.body.password);
 
-    User.findOne({ username: username }, async function (err, foundUser) {
+    User.findOne({ email: email }, async function (err, foundUser) {
         if (err) {
             console.log(err);
         } else {
@@ -32,7 +32,7 @@ exports.postLogin = function (req, res) {
                     res.render("login", { dangerMessage: `Wrong password. Please try again.` });
                 }
             } else {
-                res.render("login", { dangerMessage: `User not found. Enter a valid username.` });
+                res.render("login", { dangerMessage: `User not found. Enter a valid email.` });
             }
         }
     });
@@ -47,20 +47,23 @@ exports.getRegister = function (req, res) {
 // POST
 // registration page
 exports.postRegister = function (req, res) {
-    User.findOne({ username: req.body.username }, async function (err, foundUser) {
+    User.findOne({ email: req.body.email }, async function (err, foundUser) {
         if (err) {
             res.send(err);
         } else {
             if (foundUser == null) {
                 const newUser = new User({
-                    username: req.body.username,
+                    firstname: req.body.firstname,
+                    lastname: req.body.lastname,
+                    studentID: req.body.studentID, 
+                    email: req.body.email,
                     password: md5(req.body.password),
                     signedIn: false
                 });
                 newUser.save();
                 res.redirect("/");
             } else {
-                res.render("register", { dangerMessage: "Username already exists. Please use another username." });
+                res.render("register", { dangerMessage: "email already exists. Please use another email." });
             }
         }
     });

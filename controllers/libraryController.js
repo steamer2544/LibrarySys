@@ -1,6 +1,9 @@
 const Library = require("../models/libraryModel.js");
 const User = require("../models/userModel.js");
 
+
+
+
 // GET
 // library homepage
 exports.getLibrary = function (req, res) {
@@ -58,7 +61,6 @@ exports.postIssueBook = function (req, res) {
                 // adding selected book to the user collection
                 foundUser.issuedBooks.push({
                     bookName: req.body.bookName,
-                    //issueddate: new Date()//.toLocaleDateString()
                 });
                 await foundUser.save();
                 // user issues the new book
